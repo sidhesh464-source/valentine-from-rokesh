@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for my girl 👑</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="surprise-body">
+    <div class="container">
+        <div class="valentine-card" id="surpriseCardOuter">
+            <p class="quote">"Every love story is beautiful, but ours is my favorite" 💕</p>
+            <div class="gift-container">
+                <img src="https://media.tenor.com/2YcE_C_LpXMAAAAm/gift-love.gif" alt="Gift Box" class="gift-img">
+            </div>
+            <h2 class="valentine-header">Happy Valentine's Day! 🌹</h2>
+            <div class="letter-content">
+                <p>Thank you for being the reason I smile every day.</p>
+                <p>Here's to us, to love, and to endless adventures together!</p>
+            </div>
+            <h3 class="i-love-you">I Love You! ❤️</h3>
+            <div class="letter-buttons">
+                <button class="btn btn-letter-pink" id="showLetterBtn">💌 Love Letter</button>
+            </div>
+        </div>
+
+        <!-- Detailed Love Letter (Hidden initially) -->
+        <div id="detailedLetter" class="valentine-card hidden-letter">
+            <div class="letter-inner">
+                <p>From the moment you entered my life, everything changed. The world became brighter, colors more
+                    vivid, and every day filled with meaning. You are the sunshine that warms my heart and the moonlight
+                    that guides me through the darkest nights.</p>
+                <p>When I'm with you, time stands still. Your smile is my favorite sight, your laugh my favorite sound,
+                    and your happiness my greatest wish. Every moment we share becomes a treasured memory, a beautiful
+                    chapter in our story together.</p>
+                <p>You've shown me what true love means—it's in the little things, the quiet moments, the shared
+                    glances, and the unspoken understanding. It's in the way you make me feel safe, cherished, and
+                    completely myself.</p>
+                <p>Thank you for being you, for choosing me, for all the love you give so freely. I promise to treasure
+                    your heart, to support your dreams, and to love you more with each passing day.</p>
+                <p>You are my today and all of my tomorrows. Happy Valentine's Day, my love.</p>
+                <div class="signature">
+                    <p class="forever">Forever Yours,</p>
+                    <p class="valentine-sign">Your Valentine 💕</p>
+                </div>
+                <button class="btn btn-back" id="closeLetterBtn">Close ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <script>
+        // Create hearts automatically on this page
+        function createHearts() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.bottom = '-10px';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    heart.style.opacity = Math.random();
+                    const colors = ['#ff4d6d', '#ff758f', '#ff85a1', '#ffb3c1', '#c9184a'];
+                    heart.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 100);
+            }
+        }
+        window.onload = createHearts;
+
+        // Letter Reveal Logic
+        const showBtn = document.getElementById('showLetterBtn');
+        const closeBtn = document.getElementById('closeLetterBtn');
+        const mainCard = document.getElementById('surpriseCardOuter');
+        const letterCard = document.getElementById('detailedLetter');
+
+        showBtn.addEventListener('click', () => {
+            mainCard.classList.add('fade-out');
+            setTimeout(() => {
+                mainCard.style.display = 'none';
+                letterCard.style.display = 'block';
+                setTimeout(() => {
+                    letterCard.classList.add('reveal-letter');
+                }, 10);
+            }, 500);
+        });
+
+        closeBtn.addEventListener('click', () => {
+            letterCard.classList.remove('reveal-letter');
+            setTimeout(() => {
+                letterCard.style.display = 'none';
+                mainCard.style.display = 'block';
+                setTimeout(() => {
+                    mainCard.classList.remove('fade-out');
+                }, 10);
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

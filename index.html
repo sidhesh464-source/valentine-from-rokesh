@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Main Question Card -->
+        <div class="valentine-card" id="mainCard">
+            <div class="video-container">
+                <video autoplay loop muted playsinline class="valentine-video">
+                    <source src="replay.mp4" type="video/mp4">
+                </video>
+            </div>
+            <h1>Will you be my Valentine? ❤️</h1>
+            <p>Click your answer below!</p>
+            <div class="btn-group">
+                <button id="yesBtn" class="btn btn-yes">YES! 💖</button>
+                <button id="noBtn" class="btn btn-no">No 😢</button>
+            </div>
+        </div>
+
+        <!-- Success Message Card -->
+        <div class="valentine-card hidden" id="successCard">
+            <div class="video-container">
+                <video autoplay loop muted playsinline class="valentine-video">
+                    <source src="lo.mp4" type="video/mp4">
+                </video>
+            </div>
+            <h1>Yay! I knew it! 🥰</h1>
+            <p>I love you so much! See you on Valentine's Day! ✨</p>
+            <button id="surpriseBtn" class="btn btn-yes">Surprise for my girl 👑</button>
+            <div class="hearts-container" id="heartsContainer"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

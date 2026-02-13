@@ -1,0 +1,450 @@
+html,
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Enable vertical scrolling globally */
+    scroll-behavior: smooth;
+    height: auto;
+    min-height: 100%;
+}
+
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ff85a1;
+    --bg-color: #fff0f3;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #4a0e0e;
+    --btn-no-bg: #e0e0e0;
+    --btn-no-text: #666;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Start from top to allow scrolling */
+    position: relative;
+    padding: 60px 10px;
+    /* Extra breathing room */
+}
+
+/* Floating hearts background */
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffb3c1' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+    background-size: 50px 50px;
+    opacity: 0.2;
+    z-index: -1;
+    animation: floatBg 20s linear infinite;
+}
+
+@keyframes floatBg {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+.container {
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    /* Sensible max width for the container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.valentine-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 2rem 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 380px;
+    /* Phone-sized medium width */
+    width: 95%;
+    margin: 10px auto;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 5;
+}
+
+.romantic-image-container {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 250px;
+    /* Medium-small size */
+    margin: 0 auto 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.2);
+    cursor: pointer;
+    position: relative;
+}
+
+.valentine-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+    /* Let the container handle clicks */
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50px);
+        opacity: 0;
+    }
+}
+
+.image-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+p {
+    color: #880d1e;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+    min-height: 60px;
+    align-items: center;
+}
+
+.btn {
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.btn-yes {
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 77, 109, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
+    }
+}
+
+.btn-yes:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 15px 30px rgba(255, 77, 109, 0.4);
+    animation: none;
+}
+
+.btn-no {
+    background-color: var(--btn-no-bg);
+    color: var(--btn-no-text);
+    position: relative;
+    z-index: 100;
+    transition: left 0.2s ease-out, top 0.2s ease-out;
+    white-space: nowrap;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+#successCard {
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    0% {
+        display: block;
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Success hearts animation */
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    transform: rotate(45deg);
+    animation: heartFloat 3s ease-out forwards;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    left: -50%;
+}
+
+.heart::after {
+    top: -50%;
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: rotate(45deg) translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(45deg) translateY(-500px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Surprise Page Styles */
+#surpriseCard {
+    background: #ffe5ec;
+    border: none;
+    max-width: 380px;
+    /* Matching phone size */
+}
+
+.quote {
+    font-style: italic;
+    color: #880d1e;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.gift-container {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+}
+
+.gift-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.valentine-header {
+    color: #590d22;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.letter-content {
+    color: #880d1e;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.i-love-you {
+    font-size: 1.5rem;
+    color: #590d22;
+    margin-bottom: 2rem;
+}
+
+.letter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-download {
+    background: #ff0a54;
+    color: white;
+    padding: 12px 25px;
+    box-shadow: 0 5px 15px rgba(255, 10, 84, 0.3);
+}
+
+.btn-letter-pink {
+    background: #ff0a54;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 25px rgba(255, 10, 84, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-letter-pink:hover {
+    background: #ff477e;
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 10, 84, 0.5);
+}
+
+.btn-back {
+    margin-top: 2rem;
+    background: #ffccd5;
+    color: #ff0a54;
+}
+
+/* Detailed Letter Styles */
+.hidden-letter {
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.reveal-letter {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+#detailedLetter {
+    background: #ffe5ec;
+    /* Pink background */
+    border: 2px solid #ff0a54;
+    border-radius: 10px;
+    /* Rectangular box with slight rounding */
+    max-width: 380px;
+    /* Matching phone size */
+    max-height: 85vh;
+    /* Limit height to 85% of screen */
+    overflow-y: auto;
+    /* Enable scroll inside the letter card */
+    padding: 2.5rem;
+    box-shadow: 0 15px 30px rgba(255, 10, 84, 0.2);
+    position: relative;
+}
+
+/* Custom Scrollbar for the Letter */
+#detailedLetter::-webkit-scrollbar {
+    width: 6px;
+}
+
+#detailedLetter::-webkit-scrollbar-track {
+    background: #ffccd5;
+}
+
+#detailedLetter::-webkit-scrollbar-thumb {
+    background: #ff0a54;
+    border-radius: 10px;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+.letter-inner {
+    font-family: 'Playfair Display', serif;
+    color: #590d22;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.15rem;
+}
+
+.letter-inner p {
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    margin-top: 3rem;
+    text-align: right;
+}
+
+.signature .forever {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #ff0a54;
+    margin-bottom: 0.5rem;
+}
+
+.signature .valentine-sign {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ff0a54;
+}
+
+/* Mobile adjustments for the long letter */
+@media (max-width: 600px) {
+    .letter-inner {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .valentine-card {
+        padding: 1.5rem;
+    }
+}
